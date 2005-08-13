@@ -10,8 +10,30 @@ Source0:	http://www.openclipart.org/downloads/%{version}/%{name}-%{version}-full
 # Source0-md5:	12ec606fa419f11c1d034ef3a4861fff
 URL:		http://www.openclipart.org/
 BuildRequires:	findutils
-BuildArch:	noarch
 Requires:       %{name}-AUTHORS = %{epoch}:%{version}-%{release}
+Obsoletes:	openclipart-MISC
+Obsoletes:	openclipart-action
+Obsoletes:	openclipart-actions
+Obsoletes:	openclipart-animals
+Obsoletes:	openclipart-application
+Obsoletes:	openclipart-apps
+Obsoletes:	openclipart-computer
+Obsoletes:	openclipart-device
+Obsoletes:	openclipart-filesystem
+Obsoletes:	openclipart-filesystems
+Obsoletes:	openclipart-filetype
+Obsoletes:	openclipart-food
+Obsoletes:	openclipart-gradients
+Obsoletes:	openclipart-homes
+Obsoletes:	openclipart-icons
+Obsoletes:	openclipart-images
+Obsoletes:	openclipart-map_symbols
+Obsoletes:	openclipart-mime-types
+Obsoletes:	openclipart-ocal_logo
+Obsoletes:	openclipart-people
+Obsoletes:	openclipart-signs
+Obsoletes:	openclipart-unsorted
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
