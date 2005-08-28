@@ -2,7 +2,7 @@ Summary:	Archive of clip art that can be used for free for any use
 Summary(pl):	Archiwum klipartów, które mo¿na u¿ywaæ w dowolny sposób za darmo
 Name:		openclipart
 Version:	0.16
-Release:	0.1
+Release:	1
 Epoch:		0
 License:	Creative Commons and/or Public Domain
 Group:		Applications/Graphics
