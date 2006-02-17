@@ -1,13 +1,13 @@
 Summary:	Archive of clip art that can be used for free for any use
 Summary(pl):	Archiwum klipartów, które mo¿na u¿ywaæ w dowolny sposób za darmo
 Name:		openclipart
-Version:	0.16
+Version:	0.18
 Release:	1
 Epoch:		0
 License:	Creative Commons and/or Public Domain
 Group:		Applications/Graphics
 Source0:	http://www.openclipart.org/downloads/%{version}/%{name}-%{version}-full.tar.bz2
-# Source0-md5:	12ec606fa419f11c1d034ef3a4861fff
+# Source0-md5:	f13a58a7fcab9d8647ea528d28c4b813
 URL:		http://www.openclipart.org/
 BuildRequires:	findutils
 Requires:       %{name}-AUTHORS = %{epoch}:%{version}-%{release}
@@ -75,7 +75,7 @@ PNG version of Openclipart.
 Kliparty w wersji PNG.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-full
 
 %build
 find . -empty -type d -exec rmdir "{}" ";" || :
@@ -113,4 +113,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files AUTHORS -f %{name}-txt.txt
 %defattr(644,root,root,755)
-%doc README.txt statistics.txt
+%doc README ChangeLog
