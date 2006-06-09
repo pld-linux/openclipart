@@ -52,9 +52,9 @@ powinien zapisaæ siê na listê. Mo¿e tak¿e przejrzeæ archiwum, aby
 poznaæ historiê projektu.
 
 %package AUTHORS
-Summary:        Authors List of all cliparts
-Summary(pl):    Lista autorów wszystkich klipartów
-Group:          Applications/Graphics
+Summary:	Authors List of all cliparts
+Summary(pl):	Lista autorów wszystkich klipartów
+Group:		Applications/Graphics
 
 %description AUTHORS
 Authors List of all cliparts from all openclipart packages.
@@ -63,10 +63,10 @@ Authors List of all cliparts from all openclipart packages.
 Lista autorów wszystkich klipartów z pakietów openclipart.
 
 %package png
-Summary:        PNG Openclipart
-Summary(pl):    Kliparty w wersji PNG
-Group:          Applications/Graphics
-Requires:       %{name}-AUTHORS = %{epoch}:%{version}-%{release}
+Summary:	PNG Openclipart
+Summary(pl):	Kliparty w wersji PNG
+Group:		Applications/Graphics
+Requires:	%{name}-AUTHORS = %{epoch}:%{version}-%{release}
 
 %description png
 PNG version of Openclipart.
