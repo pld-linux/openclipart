@@ -114,3 +114,9 @@ rm -rf $RPM_BUILD_ROOT
 %files AUTHORS -f %{name}-txt.txt
 %defattr(644,root,root,755)
 %doc README ChangeLog
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/clipart
+%dir %{_datadir}/%{name}/clipart/special
+%dir %{_datadir}/%{name}/clipart/special/examples
+%dir %{_datadir}/%{name}/nsis
+%dir %{_datadir}/%{name}/nsis/Licenses
