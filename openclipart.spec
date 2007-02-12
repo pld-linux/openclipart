@@ -1,5 +1,5 @@
 Summary:	Archive of clip art that can be used for free for any use
-Summary(pl):	Archiwum klipartów, które mo¿na u¿ywaæ w dowolny sposób za darmo
+Summary(pl.UTF-8):   Archiwum klipartÃ³w, ktÃ³re moÅ¼na uÅ¼ywaÄ‡ w dowolny sposÃ³b za darmo
 Name:		openclipart
 Version:	0.18
 Release:	1
@@ -43,35 +43,35 @@ placed into the Public Domain according to the statement by the
 Creative Commons. If you'd like to help out, please join the mailing
 list. Also, browse the archives to review the project's history.
 
-%description -l pl
-Celem tego projektu jest stworzenie archiwum klipartów, które mo¿na
-u¿ywaæ w dowolny sposób za darmo. Wszystkie grafiki przekazane do
-tego projektu powinny byæ w³asno¶ci± publiczn± ("Public Domain")
-zgodnie z o¶wiadczeniem Creative Commons. Je¶li kto¶ chce pomóc,
-powinien zapisaæ siê na listê. Mo¿e tak¿e przejrzeæ archiwum, aby
-poznaæ historiê projektu.
+%description -l pl.UTF-8
+Celem tego projektu jest stworzenie archiwum klipartÃ³w, ktÃ³re moÅ¼na
+uÅ¼ywaÄ‡ w dowolny sposÃ³b za darmo. Wszystkie grafiki przekazane do
+tego projektu powinny byÄ‡ wÅ‚asnoÅ›ciÄ… publicznÄ… ("Public Domain")
+zgodnie z oÅ›wiadczeniem Creative Commons. JeÅ›li ktoÅ› chce pomÃ³c,
+powinien zapisaÄ‡ siÄ™ na listÄ™. MoÅ¼e takÅ¼e przejrzeÄ‡ archiwum, aby
+poznaÄ‡ historiÄ™ projektu.
 
 %package AUTHORS
 Summary:	Authors List of all cliparts
-Summary(pl):	Lista autorów wszystkich klipartów
+Summary(pl.UTF-8):   Lista autorÃ³w wszystkich klipartÃ³w
 Group:		Applications/Graphics
 
 %description AUTHORS
 Authors List of all cliparts from all openclipart packages.
 
-%description AUTHORS -l pl
-Lista autorów wszystkich klipartów z pakietów openclipart.
+%description AUTHORS -l pl.UTF-8
+Lista autorÃ³w wszystkich klipartÃ³w z pakietÃ³w openclipart.
 
 %package png
 Summary:	PNG Openclipart
-Summary(pl):	Kliparty w wersji PNG
+Summary(pl.UTF-8):   Kliparty w wersji PNG
 Group:		Applications/Graphics
 Requires:	%{name}-AUTHORS = %{epoch}:%{version}-%{release}
 
 %description png
 PNG version of Openclipart.
 
-%description png -l pl
+%description png -l pl.UTF-8
 Kliparty w wersji PNG.
 
 %prep
