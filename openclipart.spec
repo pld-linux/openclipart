@@ -1,5 +1,5 @@
 Summary:	Archive of clip art that can be used for free for any use
-Summary(pl.UTF-8):   Archiwum klipartów, które można używać w dowolny sposób za darmo
+Summary(pl.UTF-8):	Archiwum klipartów, które można używać w dowolny sposób za darmo
 Name:		openclipart
 Version:	0.18
 Release:	1
@@ -53,7 +53,7 @@ poznać historię projektu.
 
 %package AUTHORS
 Summary:	Authors List of all cliparts
-Summary(pl.UTF-8):   Lista autorów wszystkich klipartów
+Summary(pl.UTF-8):	Lista autorów wszystkich klipartów
 Group:		Applications/Graphics
 
 %description AUTHORS
@@ -64,7 +64,7 @@ Lista autorów wszystkich klipartów z pakietów openclipart.
 
 %package png
 Summary:	PNG Openclipart
-Summary(pl.UTF-8):   Kliparty w wersji PNG
+Summary(pl.UTF-8):	Kliparty w wersji PNG
 Group:		Applications/Graphics
 Requires:	%{name}-AUTHORS = %{epoch}:%{version}-%{release}
 
