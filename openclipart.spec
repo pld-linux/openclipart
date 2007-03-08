@@ -81,7 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT
 
 install_data() {
-	echo "Using cp -a$l top copy files"
+	echo "Using cp -a$l to copy files"
 	for src in "$@"; do
 		dst=${src#clipart/}
 		echo "- $dst"
