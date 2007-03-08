@@ -2,15 +2,14 @@ Summary:	Archive of clip art that can be used for free for any use
 Summary(pl.UTF-8):	Archiwum klipartów, które można używać w dowolny sposób za darmo
 Name:		openclipart
 Version:	0.18
-Release:	2
+Release:	3
 Epoch:		0
 License:	Creative Commons and/or Public Domain
 Group:		Applications/Graphics
 Source0:	http://www.openclipart.org/downloads/%{version}/%{name}-%{version}-full.tar.bz2
 # Source0-md5:	f13a58a7fcab9d8647ea528d28c4b813
 URL:		http://www.openclipart.org/
-BuildRequires:	findutils
-Requires:       %{name}-AUTHORS = %{epoch}:%{version}-%{release}
+Requires:	%{name}-AUTHORS = %{epoch}:%{version}-%{release}
 Obsoletes:	openclipart-MISC
 Obsoletes:	openclipart-action
 Obsoletes:	openclipart-actions
@@ -77,30 +76,49 @@ Kliparty w wersji PNG.
 %prep
 %setup -q -n %{name}-%{version}-full
 
-%build
-find . -empty -type d -exec rmdir "{}" ";" || :
-
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT
 
-:> %{name}-txt.txt
-:> %{name}-svg.txt
-:> %{name}-png.txt
+install_data() {
+	echo "Using cp -a$l top copy files"
+	for src in "$@"; do
+		dst=${src#clipart/}
+		echo "- $dst"
+		install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/$dst
+		diradd=0
+		if ls $src/*.svg > /dev/null 2>&1; then
+			diradd=1
+			echo " svg: $dst"
+			cp -a$l $src/*.svg $RPM_BUILD_ROOT%{_datadir}/%{name}/$dst
+			echo "%{_datadir}/%{name}/$dst/*.svg" >> %{name}-svg.txt
+		fi
+		if ls $src/*.png > /dev/null 2>&1; then
+			diradd=1
+			echo " png: $dst"
+			cp -a$l $src/*.png $RPM_BUILD_ROOT%{_datadir}/%{name}/$dst
+			echo "%{_datadir}/%{name}/$dst/*.png" >> %{name}-png.txt
+		fi
+		if ls $src/*.txt > /dev/null 2>&1; then
+			diradd=1
+			echo " txt: $dst"
+			cp -a$l $src/*.txt $RPM_BUILD_ROOT%{_datadir}/%{name}/$dst
+			echo "%{_datadir}/%{name}/$dst/*.txt" >> %{name}-txt.txt
+		fi
+		if [ $diradd = 1 ]; then
+			echo "%dir %{_datadir}/%{name}/$dst" >> %{name}-txt.txt
+		fi
+	done
+}
 
-for dir in `find . ! -name '.' -type d -print`; do
-	install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/${dir}
-	if (install ${dir}/*.svg $RPM_BUILD_ROOT%{_datadir}/%{name}/${dir}); then
-		echo "%dir %{_datadir}/%{name}/${dir}" >> %{name}-svg.txt
-		echo "%{_datadir}/%{name}/${dir}/*.svg" >> %{name}-svg.txt
-	fi
-	if (install ${dir}/*.png $RPM_BUILD_ROOT%{_datadir}/%{name}/${dir}); then
-		echo "%dir %{_datadir}/%{name}/${dir}" >> %{name}-png.txt
-		echo "%{_datadir}/%{name}/${dir}/*.png" >> %{name}-png.txt
-	fi
-	if (install ${dir}/*.txt $RPM_BUILD_ROOT%{_datadir}/%{name}/${dir}); then
-		echo "%{_datadir}/%{name}/${dir}/*.txt" >> %{name}-txt.txt
-	fi
-done
+rm -f %{name}-{txt,svg,png}.txt
+
+# test if we can hardlink -- src and dest on the same partition
+if cp -al README $RPM_BUILD_ROOT/README 2>/dev/null; then
+	l=l
+	rm -f $RPM_BUILD_ROOT/README
+fi
+install_data $(find clipart ! -name clipart -type d)
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -113,10 +131,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files AUTHORS -f %{name}-txt.txt
 %defattr(644,root,root,755)
-%doc README ChangeLog
+%doc AUTHORS README ChangeLog NEWS
 %dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/clipart
-%dir %{_datadir}/%{name}/clipart/special
-%dir %{_datadir}/%{name}/clipart/special/examples
-%dir %{_datadir}/%{name}/nsis
-%dir %{_datadir}/%{name}/nsis/Licenses
+%dir %{_datadir}/%{name}/special/examples
