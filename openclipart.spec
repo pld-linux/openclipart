@@ -1,12 +1,12 @@
 Summary:	Archive of clip art that can be used for free for any use
 Summary(pl.UTF-8):	Archiwum klipartów, które można używać w dowolny sposób za darmo
 Name:		openclipart
-Version:	0.18
-Release:	4
+Version:	0.19
+Release:	1
 Epoch:		0
 License:	Creative Commons and/or Public Domain
 Group:		Applications/Graphics
-Source0:	http://www.openclipart.org/downloads/%{version}/%{name}-%{version}-full.tar.bz2
+Source0:	http://www.openclipart.org/downloads/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	f13a58a7fcab9d8647ea528d28c4b813
 URL:		http://www.openclipart.org/
 Requires:	%{name}-AUTHORS = %{epoch}:%{version}-%{release}
@@ -74,7 +74,7 @@ PNG version of Openclipart.
 Kliparty w wersji PNG.
 
 %prep
-%setup -q -n %{name}-%{version}-full
+%setup -q
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -83,7 +83,7 @@ install -d $RPM_BUILD_ROOT
 install_data() {
 	echo "Using cp -a$l to copy files"
 	for src in "$@"; do
-		dst=${src#clipart/}
+		dst=${src#./}
 		echo "- $dst"
 		install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/$dst
 		diradd=0
@@ -99,26 +99,22 @@ install_data() {
 			cp -a$l $src/*.png $RPM_BUILD_ROOT%{_datadir}/%{name}/$dst
 			echo "%{_datadir}/%{name}/$dst/*.png" >> %{name}-png.txt
 		fi
-		if ls $src/*.txt > /dev/null 2>&1; then
-			diradd=1
-			echo " txt: $dst"
-			cp -a$l $src/*.txt $RPM_BUILD_ROOT%{_datadir}/%{name}/$dst
-			echo "%{_datadir}/%{name}/$dst/*.txt" >> %{name}-txt.txt
-		fi
 		if [ $diradd = 1 ]; then
 			echo "%dir %{_datadir}/%{name}/$dst" >> %{name}-txt.txt
 		fi
 	done
 }
 
-rm -f %{name}-{txt,svg,png}.txt
+rm -f %{name}-{svg,png}.txt
 
 # test if we can hardlink -- src and dest on the same partition
-if cp -al README $RPM_BUILD_ROOT/README 2>/dev/null; then
+if cp -al index.html $RPM_BUILD_ROOT/index.html 2>/dev/null; then
 	l=l
-	rm -f $RPM_BUILD_ROOT/README
+	rm -f $RPM_BUILD_ROOT/index.html
 fi
-install_data $(find clipart ! -name clipart -type d)
+
+# skip images/ -- there are files used only by index*.html, not cliparts
+install_data $(find . ! -name . ! -name images -type d)
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -131,6 +127,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files AUTHORS -f %{name}-txt.txt
 %defattr(644,root,root,755)
-%doc AUTHORS README ChangeLog NEWS
+%doc index*.html images
 %dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/special/examples
