@@ -7,7 +7,7 @@ Epoch:		0
 License:	Creative Commons and/or Public Domain
 Group:		Applications/Graphics
 Source0:	http://www.openclipart.org/downloads/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	f13a58a7fcab9d8647ea528d28c4b813
+# Source0-md5:	2ca10eadddd29982d881ee9c1cb86a4f
 URL:		http://www.openclipart.org/
 Requires:	%{name}-AUTHORS = %{epoch}:%{version}-%{release}
 Obsoletes:	openclipart-MISC
